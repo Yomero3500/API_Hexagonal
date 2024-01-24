@@ -26,20 +26,19 @@ class GetUserController {
                             name: searchedUser.name,
                             last_name: searchedUser.last_name
                         },
-                        message: " Usuario encontrado"
+                        message: "Usuario encontrado"
                     });
                 }
                 else {
                     return res.status(400).send({
                         status: "Error",
-                        data: [],
                         message: "Error al Encontrar Usuario"
                     });
                 }
             }
             catch (error) {
-                console.log("Error en userController", error);
-                res.status(500).send({
+                console.log("Error en userController get>", error);
+                return res.status(500).send({
                     status: "error",
                     message: "Error en Server"
                 });

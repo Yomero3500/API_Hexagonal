@@ -25,7 +25,7 @@ export class AddUserController{
                 }) 
             }
         } catch (error) {
-            console.log("Error en userController",error);
+            console.log("Error en userController add>",error);
             res.status(500).send({
                 status: "error",
                 message: "Error en Server"

@@ -39,7 +39,7 @@ class AddBookController {
                 }
             }
             catch (error) {
-                console.log("Error en BookController>", error);
+                console.log("Error en BookController add>", error);
                 res.status(500).send({
                     status: "error",
                     message: "Error en Server"
