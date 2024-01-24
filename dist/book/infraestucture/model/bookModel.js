@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_typescript_1 = require("sequelize-typescript");
-let Book = class Book extends sequelize_typescript_1.Model {
+let BookModel = class BookModel extends sequelize_typescript_1.Model {
 };
 __decorate([
     (0, sequelize_typescript_1.Column)({
@@ -15,28 +15,29 @@ __decorate([
         autoIncrement: true,
         primaryKey: true
     })
-], Book.prototype, "id", void 0);
+], BookModel.prototype, "id", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
         allowNull: false
     })
-], Book.prototype, "name", void 0);
+], BookModel.prototype, "name", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.STRING,
         allowNull: false
     })
-], Book.prototype, "autor", void 0);
+], BookModel.prototype, "autor", void 0);
 __decorate([
     (0, sequelize_typescript_1.Column)({
         type: sequelize_typescript_1.DataType.BOOLEAN,
         allowNull: false
     })
-], Book.prototype, "estado", void 0);
-Book = __decorate([
+], BookModel.prototype, "estado", void 0);
+BookModel = __decorate([
     (0, sequelize_typescript_1.Table)({
         tableName: "books",
         timestamps: false
     })
-], Book);
+], BookModel);
+exports.default = BookModel;

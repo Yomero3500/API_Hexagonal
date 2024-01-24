@@ -4,6 +4,7 @@ import helmet from 'helmet';
 
 import { initialDataBase } from './database/sequelize';
 import { userRouter } from './user/infraestructure/userRouter';
+import { bookRouter } from './book/infraestucture/bookRouter';
 
 const options = {
     secrets: ["([0-9]{4}-?)+"]
@@ -15,7 +16,7 @@ const signale = new Signale(options);
 app.use(helmet());
 app.use(express.json());
 app.use('/user', userRouter);
-app.use('/user',  userRouter);
+app.use('/book', bookRouter);
 
 async function startServer() {
     try {

@@ -5,15 +5,15 @@ export class AddBookController{
     constructor(readonly addBookUseCase: AddBookUseCase){}
     async run(req: Request, res: Response){
         try {
-            let {name, autor, status} = req.body;
-            let libroCreado = await this.addBookUseCase.run(name, autor, status);
-
+            let {name, autor, estado} = req.body;
+            let libroCreado = await this.addBookUseCase.run(name, autor, estado);
+            
             if (libroCreado) {
                 return res.status(200).send({
                     status: "success",
                     data:{
                         name: libroCreado.name,
-                        status: libroCreado.estado,
+                        estado: libroCreado.estado,
                         autor: libroCreado.autor
                     },
                     message: "Libro Creado"

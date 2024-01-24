@@ -4,7 +4,7 @@ import { Column, DataType, Model, Table } from "sequelize-typescript";
     tableName: "books",
     timestamps: false
 })
-class Book extends Model{
+class BookModel extends Model{
     @Column({
         type: DataType.INTEGER,
         autoIncrement: true,
@@ -30,3 +30,5 @@ class Book extends Model{
     })
     public estado!: boolean;
 }
+
+export default BookModel;

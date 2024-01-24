@@ -17,6 +17,7 @@ const signale_1 = require("signale");
 const helmet_1 = __importDefault(require("helmet"));
 const sequelize_1 = require("./database/sequelize");
 const userRouter_1 = require("./user/infraestructure/userRouter");
+const bookRouter_1 = require("./book/infraestucture/bookRouter");
 const options = {
     secrets: ["([0-9]{4}-?)+"]
 };
@@ -25,7 +26,7 @@ const signale = new signale_1.Signale(options);
 app.use((0, helmet_1.default)());
 app.use(express_1.default.json());
 app.use('/user', userRouter_1.userRouter);
-app.use('/user', userRouter_1.userRouter);
+app.use('/book', bookRouter_1.bookRouter);
 function startServer() {
     return __awaiter(this, void 0, void 0, function* () {
         try {

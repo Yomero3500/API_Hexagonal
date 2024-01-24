@@ -9,37 +9,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AddBookController = void 0;
-class AddBookController {
-    constructor(addBookUseCase) {
-        this.addBookUseCase = addBookUseCase;
+exports.GetBookController = void 0;
+class GetBookController {
+    constructor(getBookUseCase) {
+        this.getBookUseCase = getBookUseCase;
     }
     run(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                let { name, autor, estado } = req.body;
-                let libroCreado = yield this.addBookUseCase.run(name, autor, estado);
-                if (libroCreado) {
+                let { name } = req.body;
+                let searchedBook = yield this.getBookUseCase.run(name);
+                if (searchedBook) {
                     return res.status(200).send({
                         status: "success",
                         data: {
-                            name: libroCreado.name,
-                            estado: libroCreado.estado,
-                            autor: libroCreado.autor
+                            name: searchedBook.name,
+                            autor: searchedBook.autor,
+                            estado: searchedBook.estado
                         },
-                        message: "Libro Creado"
+                        message: " Libro encontrado"
                     });
                 }
                 else {
-                    return res.status(404).send({
+                    return res.status(400).send({
                         status: "Error",
                         data: [],
-                        message: "Error al Crear Un Libro"
+                        message: "Error al Encontrar un Libro"
                     });
                 }
             }
             catch (error) {
-                console.log("Error en BookController>", error);
+                console.log("Error en bookController", error);
                 res.status(500).send({
                     status: "error",
                     message: "Error en Server"
@@ -48,4 +48,4 @@ class AddBookController {
         });
     }
 }
-exports.AddBookController = AddBookController;
+exports.GetBookController = GetBookController;

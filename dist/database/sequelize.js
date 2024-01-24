@@ -16,6 +16,7 @@ exports.initialDataBase = exports.sequelize = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const dotenv_1 = __importDefault(require("dotenv"));
 const userModel_1 = __importDefault(require("../user/infraestructure/model/userModel"));
+const bookModel_1 = __importDefault(require("../book/infraestucture/model/bookModel"));
 dotenv_1.default.config();
 exports.sequelize = new sequelize_typescript_1.Sequelize({
     dialect: "mysql",
@@ -24,7 +25,7 @@ exports.sequelize = new sequelize_typescript_1.Sequelize({
     username: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     port: 3306,
-    models: [userModel_1.default],
+    models: [userModel_1.default, bookModel_1.default],
 });
 function initialDataBase() {
     return __awaiter(this, void 0, void 0, function* () {
