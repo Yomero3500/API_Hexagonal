@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getUserController = exports.getUserUseCase = exports.addUserController = exports.addUserUseCase = exports.pgsqUserRepository = void 0;
+const pgsqUserRepository_1 = require("./pgsqUserRepository");
+const addUserUseCase_1 = require("../application/addUserUseCase");
+const addUserController_1 = require("./controller/addUserController");
+const getUserUseCase_1 = require("../application/getUserUseCase");
+const getUserController_1 = require("./controller/getUserController");
+exports.pgsqUserRepository = new pgsqUserRepository_1.PgsqUserRepository();
+exports.addUserUseCase = new addUserUseCase_1.AddUserUseCase(exports.pgsqUserRepository);
+exports.addUserController = new addUserController_1.AddUserController(exports.addUserUseCase);
+exports.getUserUseCase = new getUserUseCase_1.GetUserUseCase(exports.pgsqUserRepository);
+exports.getUserController = new getUserController_1.GetUserController(exports.getUserUseCase);
