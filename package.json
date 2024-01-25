@@ -8,7 +8,7 @@
     "sonar": "sonar-scanner",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "@Yomero3500",
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.3.2",
@@ -18,7 +18,6 @@
     "mysql2": "^3.7.1",
     "sequelize-typescript": "^2.1.6",
     "signale": "^1.4.0",
-    "supertest": "^6.3.4",
     "tcs": "^10.0.2",
     "typescript": "^5.3.3"
   },

@@ -3,7 +3,7 @@ POST http://localhost:3000/book/post HTTP/1.1
 Content-Type: application/json
 
 {
-    "name": "Awawawawawawawawawawawawawawawawawaw",
+    "name": "El eterno resplandor de una mente sin recuerdos",
     "autor": "Piwa",
     "estado": true
 }

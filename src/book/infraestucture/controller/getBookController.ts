@@ -8,25 +8,26 @@ export class GetBookController {
             let {name} = req.body;
             let searchedBook = await this.getBookUseCase.run(name);
 
-            if (searchedBook) 
-                res.status(200).send({
+            if (searchedBook) {
+                return res.status(200).send({
                     status: "success",
-                    data: {
+                    data:{
                         name: searchedBook.name,
                         autor: searchedBook.autor,
                         estado: searchedBook.estado
                     },
                     message:" Libro encontrado"
-                });
-             else 
-                res.status(400).send({
+                })
+            } else {
+                return res.status(400).send({
                     status: "Error",
+                    data: [],
                     message: "Error al Encontrar un Libro"
                 }) 
-            
+            }
         } catch (error) {
-            console.log("Error en bookController get>",error);
-            res.status(204).send({
+            console.log("Error en bookController",error);
+            res.status(500).send({
                 status: "error",
                 message: "Error en Server"
             })
