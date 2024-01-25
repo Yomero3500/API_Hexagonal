@@ -32,7 +32,6 @@ class SqliteBookRepository {
     getBook(name) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                console.log(name);
                 const libroCreado = yield bookModel_1.default.findOne({ where: { name: name } });
                 if (libroCreado) {
                     return new book_1.Book(libroCreado.id, libroCreado.name, libroCreado.autor, libroCreado.estado);
@@ -43,6 +42,24 @@ class SqliteBookRepository {
             }
             catch (error) {
                 console.error("Error en Sqlite obtenerBook> ", error);
+                return null;
+            }
+        });
+    }
+    updateBook(id, name, estado) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const libroActualizado = yield bookModel_1.default.findOne({ where: { id: id } });
+                if (libroActualizado) {
+                    yield libroActualizado.update(name, estado);
+                    return new book_1.Book(libroActualizado.id, libroActualizado.name, libroActualizado.autor, libroActualizado.estado);
+                }
+                else {
+                    return null;
+                }
+            }
+            catch (error) {
+                console.error("Error en Sqlite actualizarBook> ", error);
                 return null;
             }
         });

@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.initialDataBase = exports.sequelize = void 0;
+exports.finalDataBase = exports.initialDataBase = exports.sequelize = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const dotenv_1 = __importDefault(require("dotenv"));
 const userModel_1 = __importDefault(require("../user/infraestructure/model/userModel"));
@@ -42,3 +42,15 @@ function initialDataBase() {
     });
 }
 exports.initialDataBase = initialDataBase;
+function finalDataBase() {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            yield exports.sequelize.close();
+        }
+        catch (error) {
+            console.log(error);
+            process.exit(1);
+        }
+    });
+}
+exports.finalDataBase = finalDataBase;

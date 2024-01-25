@@ -8,7 +8,7 @@ export class AddBookUseCase{
             const createdBook = await this.bookRepository.addBook(name, autor, estado);
             return createdBook;
         } catch(err){
-            console.log("Error en AddBookUseCase>", err);
+            console.log("Error en AddBookUseCase:", err);
             return null;
         }
     }

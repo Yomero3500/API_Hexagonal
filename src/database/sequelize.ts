@@ -27,3 +27,12 @@ export async function initialDataBase() {
         process.exit(1);
     }
 }
+
+export async function finalDataBase() {
+    try {
+        await sequelize.close()
+    } catch (error) {
+        console.log(error);
+        process.exit(1);
+    }
+}
