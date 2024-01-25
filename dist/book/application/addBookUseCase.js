@@ -21,7 +21,7 @@ class AddBookUseCase {
                 return createdBook;
             }
             catch (err) {
-                console.log("Error en AddBookUseCase>", err);
+                console.log("Error en AddBookUseCase:", err);
                 return null;
             }
         });
