@@ -9,3 +9,4 @@ const dependencies_1 = require("./dependencies");
 exports.bookRouter = express_1.default.Router();
 exports.bookRouter.post('/post', dependencies_1.addBookController.run.bind(dependencies_1.addBookController));
 exports.bookRouter.get('/', dependencies_1.getBookController.run.bind(dependencies_1.getBookController));
+exports.bookRouter.put('/put', dependencies_1.updateBookController.run.bind(dependencies_1.updateBookController));

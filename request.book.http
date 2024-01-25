@@ -15,3 +15,13 @@ Content-Type: application/json
 {
     "name": "El eterno resplandor de una Mente sin recuerdos"
 }
+
+###
+PUT http://localhost:3000/book/put HTTP/1.1
+Content-Type:  application/json
+
+{
+    "id": 1,
+    "name": "El eterno resplandor de una Mente sin recuerdos",
+    "estado": false
+}

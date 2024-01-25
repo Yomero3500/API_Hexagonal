@@ -1,10 +1,11 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, Model, Table, ForeignKey } from "sequelize-typescript";
+import UserModel from "../../../user/infraestructure/model/userModel";
 
 @Table({
     tableName: "books",
     timestamps: false
 })
-class BookModel extends Model{
+class BookModel extends Model {
     @Column({
         type: DataType.INTEGER,
         autoIncrement: true,
@@ -29,6 +30,12 @@ class BookModel extends Model{
         allowNull: false
     })
     public estado!: boolean;
+
+    @ForeignKey(() => UserModel)
+    @Column({
+        type: DataType.INTEGER
+    })
+    public userId!: number;
 }
 
 export default BookModel;

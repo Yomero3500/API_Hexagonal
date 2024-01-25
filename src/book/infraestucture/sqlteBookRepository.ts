@@ -9,6 +9,7 @@ export class SqliteBookRepository implements BookRepository {
             console.log(name, autor, estado);
             const libroCreado = await BookModel.create({name, autor, estado});
             return new Book(libroCreado.id,libroCreado.name, libroCreado.autor, libroCreado.estado)
+
         } catch (error) {
             console.log("Error en Sqlite agregarBook> " , error);
             return null;
@@ -17,7 +18,6 @@ export class SqliteBookRepository implements BookRepository {
 
     async getBook(name: string): Promise<Book | null> {
         try {
-            console.log(name);
             const libroCreado = await BookModel.findOne({where: {name: name}});
             if (libroCreado) {
                 return new Book(libroCreado.id, libroCreado.name, libroCreado.autor, libroCreado.estado)
@@ -26,6 +26,21 @@ export class SqliteBookRepository implements BookRepository {
             }
         } catch (error) {
             console.error("Error en Sqlite obtenerBook> " , error);
+            return null;
+        }
+    }
+
+    async updateBook(id:number ,name: string, estado:boolean): Promise<Book | null> {
+        try {
+            const libroActualizado = await BookModel.findOne({where:{id: id}});
+            if (libroActualizado) {
+                await libroActualizado.update(name ,estado);
+                return new Book(libroActualizado.id, libroActualizado.name, libroActualizado.autor, libroActualizado.estado)
+            } else {
+                return null;
+            }
+        } catch (error) {
+            console.error("Error en Sqlite actualizarBook> " , error);
             return null;
         }
     }

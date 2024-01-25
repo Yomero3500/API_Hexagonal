@@ -1,4 +1,5 @@
-import { Column, DataType, Model, Table } from "sequelize-typescript";
+import { Column, DataType, HasMany, Model, Table } from "sequelize-typescript";
+import BookModel from "../../../book/infraestucture/model/bookModel";
 
 @Table({
     tableName: "users",
@@ -23,6 +24,9 @@ class UserModel extends Model{
         allowNull: false
     })
     public last_name!: string;
+
+    @HasMany(() => BookModel)
+    books!: BookModel[];
 }
 
 export default UserModel;
