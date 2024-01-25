@@ -8,13 +8,4 @@ const express_1 = __importDefault(require("express"));
 const dependencies_1 = require("./dependencies");
 exports.userRouter = express_1.default.Router();
 exports.userRouter.post('/postUser', dependencies_1.addUserController.run.bind(dependencies_1.addUserController));
-exports.userRouter.get('/getUser', (req, res) => {
-    try {
-        dependencies_1.getUserController.run.bind(dependencies_1.getUserController)(req, res);
-        return res.sendStatus(500);
-    }
-    catch (error) {
-        console.error(error);
-        return res.sendStatus(500);
-    }
-});
+exports.userRouter.get('/getUser', dependencies_1.getUserController.run.bind(dependencies_1.getUserController));
