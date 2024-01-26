@@ -1,8 +1,37 @@
-import express from 'express';
-import { addUserController, getUserController, getAllUserController } from './dependencies';
+import express from "express";
+import { addUserController, getAllUserController, getUserController } from "./dependencies";
 
 export const userRouter = express.Router();
 
-userRouter.post('/', addUserController.run.bind(addUserController));
-userRouter.get('/', getUserController.run.bind(getUserController));
-userRouter.get('/all/', getAllUserController.run.bind(getAllUserController));
+userRouter.post('/', (req, res) => {
+  addUserController.run(req, res)
+    .then(() => {
+     return null;
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    });
+});
+
+userRouter.get('/all', (req, res) => {
+  getAllUserController.run(req, res)
+    .then(() => {
+    return null;
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    });
+});
+
+userRouter.get("/", (req, res) => {
+    getUserController.run(req, res)
+    .then(() => {
+    return null;
+    })
+    .catch(error => {
+      console.error(error);
+      res.status(500).send('Internal Server Error');
+    });
+});

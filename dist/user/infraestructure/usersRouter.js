@@ -7,6 +7,33 @@ exports.userRouter = void 0;
 const express_1 = __importDefault(require("express"));
 const dependencies_1 = require("./dependencies");
 exports.userRouter = express_1.default.Router();
-exports.userRouter.post('/', dependencies_1.addUserController.run.bind(dependencies_1.addUserController));
-exports.userRouter.get('/', dependencies_1.getUserController.run.bind(dependencies_1.getUserController));
-exports.userRouter.get('/all/', dependencies_1.getAllUserController.run.bind(dependencies_1.getAllUserController));
+exports.userRouter.post('/', (req, res) => {
+    dependencies_1.addUserController.run(req, res)
+        .then(() => {
+        return null;
+    })
+        .catch(error => {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    });
+});
+exports.userRouter.get('/all', (req, res) => {
+    dependencies_1.getAllUserController.run(req, res)
+        .then(() => {
+        return null;
+    })
+        .catch(error => {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    });
+});
+exports.userRouter.get("/", (req, res) => {
+    dependencies_1.getUserController.run(req, res)
+        .then(() => {
+        return null;
+    })
+        .catch(error => {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    });
+});

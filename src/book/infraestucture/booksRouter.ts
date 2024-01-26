@@ -3,7 +3,24 @@ import { addBookController, getBookController } from './dependencies';
 
 export const bookRouter = express.Router();
 
+bookRouter.post('/',(req, res) => {
+    addBookController.run(req, res)
+    .then(() => {
+        return null;
+       })
+       .catch(error => {
+         console.error(error);
+         res.status(500).send('Internal Server Error');
+       });
+});
 
-bookRouter.post('/post', addBookController.run.bind(addBookController));
-
-bookRouter.get('/', getBookController.run.bind(getBookController));
+bookRouter.get('/', (req, res) =>{
+    getBookController.run(req, res)
+    .then(() => {
+        return null;
+       })
+       .catch(error => {
+         console.error(error);
+         res.status(500).send('Internal Server Error');
+       });
+} );
