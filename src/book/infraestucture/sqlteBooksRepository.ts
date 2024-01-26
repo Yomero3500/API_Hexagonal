@@ -1,5 +1,5 @@
-import { Book } from "../domain/book";
-import { BookRepository } from "../domain/bookRepository";
+import { Book } from "../domain/books";
+import { BookRepository } from "../domain/booksRepository";
 import BookModel from "./model/bookModel";
 
 export class SqliteBookRepository implements BookRepository {
@@ -30,18 +30,4 @@ export class SqliteBookRepository implements BookRepository {
         }
     }
 
-    async updateBook(id:number ,name: string, estado:boolean): Promise<Book | null> {
-        try {
-            const libroActualizado = await BookModel.findOne({where:{id: id}});
-            if (libroActualizado) {
-                await libroActualizado.update(name ,estado);
-                return new Book(libroActualizado.id, libroActualizado.name, libroActualizado.autor, libroActualizado.estado)
-            } else {
-                return null;
-            }
-        } catch (error) {
-            console.error("Error en Sqlite actualizarBook> " , error);
-            return null;
-        }
-    }
 }

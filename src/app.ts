@@ -3,8 +3,8 @@ import { Signale } from 'signale';
 import helmet from 'helmet';
 
 import { initialDataBase } from './database/sequelize';
-import { userRouter } from './user/infraestructure/userRouter';
-import { bookRouter } from './book/infraestucture/bookRouter';
+import { userRouter } from './user/infraestructure/usersRouter';
+import { bookRouter } from './book/infraestucture/booksRouter';
 
 const options = {
     secrets: ["([0-9]{4}-?)+"]

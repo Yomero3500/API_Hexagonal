@@ -1,5 +1,5 @@
-import { Book } from "../domain/book";
-import { BookRepository } from "../domain/bookRepository";
+import { Book } from "../domain/books";
+import { BookRepository } from "../domain/booksRepository";
 
 export class AddBookUseCase{
     constructor (readonly bookRepository: BookRepository){}

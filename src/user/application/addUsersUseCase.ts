@@ -1,5 +1,5 @@
 import {User} from '../domain/user'
-import {UserRepository} from '../domain/userRepository'
+import {UserRepository} from '../domain/usersRepository'
 
 export class AddUserUseCase{
     constructor (readonly userRepository: UserRepository){}

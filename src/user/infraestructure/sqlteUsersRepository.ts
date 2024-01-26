@@ -1,5 +1,5 @@
 import {User} from '../domain/user'
-import { UserRepository } from '../domain/userRepository'
+import { UserRepository } from '../domain/usersRepository'
 import UserModel from './model/userModel'
 
 export class PgsqUserRepository implements UserRepository{
@@ -25,6 +25,22 @@ export class PgsqUserRepository implements UserRepository{
         } catch (error) {
             console.log("Error en Pgsq encontrarUser>",error);
             return null;
+        }
+    }
+
+    async getUsers(): Promise<User[]> {
+        try {
+            let users = await UserModel.findAll();
+            return users.map(
+                (user) =>
+                new User(
+                    user.id,
+                    user.name,
+                    user.last_name
+                )
+            )
+        } catch (error) {
+            return [];
         }
     }
 } 
