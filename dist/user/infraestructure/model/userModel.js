@@ -33,6 +33,12 @@ __decorate([
     })
 ], UserModel.prototype, "last_name", void 0);
 __decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+        allowNull: false
+    })
+], UserModel.prototype, "password", void 0);
+__decorate([
     (0, sequelize_typescript_1.HasMany)(() => bookModel_1.default)
 ], UserModel.prototype, "books", void 0);
 UserModel = __decorate([

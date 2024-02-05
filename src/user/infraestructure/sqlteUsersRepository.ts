@@ -4,12 +4,12 @@ import UserModel from './model/userModel'
 
 export class PgsqUserRepository implements UserRepository{
 
-    async addUser(name: string, last_name: string): Promise<User | null>{
+    async addUser(name: string, last_name: string, password: string): Promise<User | null>{
         try {
-            const createdUser = await UserModel.create({name, last_name});
-            return new User(createdUser.id ,createdUser.name, createdUser.last_name);
+            const createdUser = await UserModel.create({name, last_name, password});
+            return new User(createdUser.id ,createdUser.name, createdUser.last_name, createdUser.password);
         } catch (error) {
-            console.log("Error en Pgsq agregarUser>",error);
+            console.log("Error en Sqlte agregarUser>",error);
             return null;
         }
     };
@@ -18,7 +18,7 @@ export class PgsqUserRepository implements UserRepository{
         try {
             const searchedUser = await UserModel.findOne({where:{ id: id}})
             if (searchedUser) {
-                return new User(searchedUser.id , searchedUser.name, searchedUser.last_name);
+                return new User(searchedUser.id , searchedUser.name, searchedUser.last_name, searchedUser.password);
             } else {
                 return null;
             }
@@ -36,7 +36,8 @@ export class PgsqUserRepository implements UserRepository{
                 new User(
                     user.id,
                     user.name,
-                    user.last_name
+                    user.last_name,
+                    user.password
                 )
             )
         } catch (error) {

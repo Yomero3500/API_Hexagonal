@@ -16,11 +16,11 @@ exports.PgsqUserRepository = void 0;
 const user_1 = require("../domain/user");
 const userModel_1 = __importDefault(require("./model/userModel"));
 class PgsqUserRepository {
-    addUser(name, last_name) {
+    addUser(name, last_name, password) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const createdUser = yield userModel_1.default.create({ name, last_name });
-                return new user_1.User(createdUser.id, createdUser.name, createdUser.last_name);
+                const createdUser = yield userModel_1.default.create({ name, last_name, password });
+                return new user_1.User(createdUser.id, createdUser.name, createdUser.last_name, createdUser.password);
             }
             catch (error) {
                 console.log("Error en Pgsq agregarUser>", error);
@@ -34,7 +34,7 @@ class PgsqUserRepository {
             try {
                 const searchedUser = yield userModel_1.default.findOne({ where: { id: id } });
                 if (searchedUser) {
-                    return new user_1.User(searchedUser.id, searchedUser.name, searchedUser.last_name);
+                    return new user_1.User(searchedUser.id, searchedUser.name, searchedUser.last_name, searchedUser.password);
                 }
                 else {
                     return null;
@@ -50,7 +50,7 @@ class PgsqUserRepository {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let users = yield userModel_1.default.findAll();
-                return users.map((user) => new user_1.User(user.id, user.name, user.last_name));
+                return users.map((user) => new user_1.User(user.id, user.name, user.last_name, user.password));
             }
             catch (error) {
                 return [];

@@ -14,10 +14,10 @@ class AddUserUseCase {
     constructor(userRepository) {
         this.userRepository = userRepository;
     }
-    run(name, last_name) {
+    run(name, last_name, password) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const createUser = yield this.userRepository.addUser(name, last_name);
+                const createUser = yield this.userRepository.addUser(name, last_name, password);
                 return createUser;
             }
             catch (error) {

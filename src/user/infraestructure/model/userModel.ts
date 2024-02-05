@@ -25,6 +25,12 @@ class UserModel extends Model{
     })
     public last_name!: string;
 
+    @Column({
+        type: DataType.STRING,
+        allowNull: false
+    })
+    public password!: string;
+
     @HasMany(() => BookModel)
     books!: BookModel[];
 }
