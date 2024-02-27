@@ -1,7 +1,6 @@
 import express from 'express';
 import { Signale } from 'signale';
 import helmet from 'helmet';
-
 import { initialDataBase } from './database/sequelize';
 import { userRouter } from './user/infraestructure/usersRouter';
 import { bookRouter } from './book/infraestucture/booksRouter';

@@ -14,8 +14,8 @@ POST http://localhost:3000/user HTTP/1.1
 Content-Type: application/json 
 
 {
-    "name": "Michi",
-    "last_name": "Vazquez",
-    "numero_telefono": "9671941293",
-    "password":"Michi1234"
+    "name": "Jose",
+    "last_name": "Jesus",
+    "numero_telefono": "8778877",
+    "password":"mikol"
 }

@@ -6,12 +6,16 @@ import { GetUserController } from "./controller/getUsersController";
 import { GetAllUsersUseCase } from "../application/UseCase/getAllUsersUseCase";
 import { GetAllUserController } from "./controller/getAllUsersController";
 import { BcryptHelper } from "./helpers/bcryptHelper";
+import { NotificationHelpers } from "./helpers/NotificationHelper";
 
 export const pgsqUserRepository= new PgsqUserRepository();
 
+export const notificationsHelpers = new NotificationHelpers();
+notificationsHelpers.inicializar(); 
+
 export const bcryptHelper = new BcryptHelper();
 
-export const addUserUseCase = new AddUserUseCase(pgsqUserRepository, bcryptHelper);
+export const addUserUseCase = new AddUserUseCase(pgsqUserRepository, bcryptHelper, notificationsHelpers);
 export const addUserController = new AddUserController(addUserUseCase);
 
 export const getUserUseCase = new GetUserUseCase(pgsqUserRepository);

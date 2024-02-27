@@ -10,7 +10,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AddUserController = void 0;
-const bcrypt_1 = require("bcrypt");
 class AddUserController {
     constructor(addUserUseCase) {
         this.addUserUseCase = addUserUseCase;
@@ -19,9 +18,7 @@ class AddUserController {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 let { name, last_name, password } = req.body;
-                const salt = (0, bcrypt_1.genSaltSync)(10);
-                const hashedPassword = (0, bcrypt_1.hashSync)(password, salt);
-                let createdUser = yield this.addUserUseCase.run(name, last_name, hashedPassword);
+                let createdUser = yield this.addUserUseCase.run(name, last_name, password);
                 if (createdUser) {
                     return res.status(200).send({
                         status: "success",

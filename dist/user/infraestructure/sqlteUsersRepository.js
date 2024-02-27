@@ -23,7 +23,7 @@ class PgsqUserRepository {
                 return new user_1.User(createdUser.id, createdUser.name, createdUser.last_name, createdUser.password);
             }
             catch (error) {
-                console.log("Error en Pgsq agregarUser>", error);
+                console.log("Error en Sqlte agregarUser>", error);
                 return null;
             }
         });
